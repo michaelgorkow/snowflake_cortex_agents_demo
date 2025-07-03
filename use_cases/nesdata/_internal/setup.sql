@@ -86,7 +86,7 @@ INSERT INTO SNOWFLAKE_INTELLIGENCE.AGENTS.CONFIG
     SAMPLE_QUESTIONS
 )
 SELECT 
-    'FINANCE_FOOD_BEVERAGE2',
+    'FINANCE_FOOD_BEVERAGE',
     'AI agent specialized in answering finance and sales questions.',
     ['PUBLIC'],
     PARSE_JSON('[

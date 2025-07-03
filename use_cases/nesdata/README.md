@@ -3,7 +3,7 @@
 ![NesData](_resources/nesdata.png)
 
 ## Overview
-**NesData** is a global online marketplace that connects people looking to rent out their homes with those seeking short-term accommodations. Whether it's a cozy apartment in the city, a beachfront villa, or a unique treehouse in the woods, StayBnB offers travelers a wide variety of places to stay in over 220 countries and regions. With a focus on community, trust, and personalized experiences, we enable hosts to earn income while helping guests experience destinations like locals.
+**NesData** is a global food and beverage company that creates products for everyday moments and special occasions. From chocolate and coffee to bottled water, frozen meals, and pet nutrition, NesData offers a diverse portfolio of trusted brands found in kitchens and pantries worldwide. Operating in over 180 countries, we combine quality ingredients with innovative food science to deliver taste, nutrition, and convenience. With a commitment to sustainable sourcing and responsible manufacturing, NesData helps families enjoy better food while supporting communities and environmental stewardship around the globe.
 
 ## Use Case Deployment
 Execute this SQL Query to create and run the notebook in your account which will generate data and required services.
