@@ -54,7 +54,7 @@ def create_marketing_campaign_documents(session, output_dir='/tmp/marketing_camp
             'discount': 10,
             'objective': 'Position PureLife as premium hydration choice during peak summer season, target 20% volume increase',
             'target_audience': 'Active lifestyle consumers aged 18-55, health-conscious, outdoor enthusiasts',
-            'key_products': ['PureLife Natural', 'PureLife Sparkling', 'PureLife Flavored'],
+            'key_products': ['PureLife Natural', 'PureLife Sparkling', 'PureLife Flavoured'],
             'channels': ['Outdoor advertising', 'Sports partnerships', 'Influencer marketing', 'Retail promotions'],
             'kpis': {
                 'volume_growth': {'target': 20, 'actual': 28},
