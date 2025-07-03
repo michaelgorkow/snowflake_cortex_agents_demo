@@ -12,6 +12,9 @@ EXECUTE IMMEDIATE FROM @CORTEX_AGENTS_DEMO.PUBLIC.GITHUB_REPO_CORTEX_AGENTS_DEMO
   USING (BRANCH => 'main', EXECUTE_NOTEBOOKS => TRUE) DRY_RUN = FALSE;
 ```
 
+> [!IMPORTANT]
+> This demo expects that you have access to Snowflake Intelligence.
+
 ## Structured Data & Unstructured Data
 This repository contains a **fictional financial dataset** from _NesData_. 
 
