@@ -6,186 +6,6 @@ from reportlab.lib import colors
 from datetime import datetime
 import os
 
-def create_financial_report_content(report, title_style, section_style, subsection_style, styles):
-    """Create content for Annual Financial Report"""
-    story = []
-    
-    # Title and Header
-    story.append(Paragraph("ANNUAL FINANCIAL REPORT", title_style))
-    story.append(Paragraph("2023", title_style))
-    story.append(Spacer(1, 30))
-    
-    # Executive Summary
-    story.append(Paragraph("EXECUTIVE SUMMARY", section_style))
-    exec_summary = """
-    Fiscal year 2023 demonstrated resilient performance despite challenging macroeconomic conditions. 
-    Total revenue reached $2.8 billion, representing 8.2% growth over 2022. Gross margin improved to 
-    42.3% driven by strategic pricing initiatives and supply chain optimization efforts. 
-    <br/><br/>
-    Operating income increased 12.1% to $456 million, with EBITDA reaching $632 million (22.6% margin). 
-    The company maintained strong cash flow generation with $487 million in operating cash flow, 
-    enabling continued investment in innovation and market expansion.
-    <br/><br/>
-    Key performance highlights include successful product launches in the premium segments, 
-    expansion into new geographic markets, and significant progress on sustainability initiatives 
-    that are increasingly important to consumers and stakeholders.
-    """
-    story.append(Paragraph(exec_summary, styles['Normal']))
-    story.append(Spacer(1, 20))
-    
-    # Financial Highlights
-    story.append(Paragraph("FINANCIAL HIGHLIGHTS", section_style))
-    
-    financial_data = [
-        ['Metric', '2023', '2022', 'Change'],
-        ['Total Revenue', '$2.8B', '$2.6B', '+8.2%'],
-        ['Gross Profit', '$1.18B', '$1.04B', '+13.5%'],
-        ['Gross Margin', '42.3%', '40.1%', '+2.2pp'],
-        ['Operating Income', '$456M', '$407M', '+12.1%'],
-        ['Operating Margin', '16.3%', '15.7%', '+0.6pp'],
-        ['EBITDA', '$632M', '$571M', '+10.7%'],
-        ['EBITDA Margin', '22.6%', '22.0%', '+0.6pp'],
-        ['Net Income', '$342M', '$298M', '+14.8%'],
-        ['EPS (Diluted)', '$3.42', '$2.98', '+14.8%'],
-        ['Operating Cash Flow', '$487M', '$431M', '+13.0%'],
-        ['Free Cash Flow', '$358M', '$312M', '+14.7%']
-    ]
-    
-    financial_table = Table(financial_data, colWidths=[2*inch, 1.2*inch, 1.2*inch, 1*inch])
-    financial_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, -1), 9),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
-    ]))
-    
-    story.append(financial_table)
-    story.append(Spacer(1, 25))
-    
-    # Revenue Analysis by Category
-    story.append(Paragraph("REVENUE ANALYSIS BY PRODUCT CATEGORY", section_style))
-    
-    category_revenue = [
-        ['Product Category', '2023 Revenue', '% of Total', 'YoY Growth', 'Key Drivers'],
-        ['Coffee', '$7M', '30.0%', '+1.07%', 'Premium positioning, new product launches'],
-        ['Chocolate', '$17M', '23.0%', '+1.3%', 'Holiday seasons, gift packaging'],
-        ['Water', '$9M', '19.0%', '+3.8%', 'Health trends, summer campaigns'],
-        ['Dairy', '$12M', '14.0%', '+1.3%', 'Ice cream innovations, seasonal growth'],
-        ['Baby Food', '$10M', '9.0%', '-2.1%', 'Organic segment expansion'],
-        ['Cereals', '$9M', '6.0%', '+0.06%', 'Healthy options, back-to-school'],
-        ['Pet Care', '$6M', '4.0%', '-1.8%', 'Rapid category growth, premiumization']
-    ]
-    
-    category_table = Table(category_revenue, colWidths=[1.3*inch, 1*inch, 0.8*inch, 0.8*inch, 1.8*inch])
-    category_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.darkgreen),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, -1), 8),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('ALIGN', (1, 0), (3, -1), 'CENTER'),
-    ]))
-    
-    story.append(category_table)
-    story.append(Spacer(1, 25))
-    
-    # Regional Performance
-    story.append(Paragraph("REGIONAL PERFORMANCE ANALYSIS", section_style))
-    
-    regional_analysis = """
-    <b>North America:</b> Delivered strong 9.4% growth to $1.12B, driven by successful product 
-    innovations and market share gains in coffee and chocolate categories. E-commerce channel 
-    expansion contributed 15% of regional growth.
-    <br/><br/>
-    <b>Europe:</b> Achieved 7.8% growth to $896M despite challenging economic conditions. 
-    Premium product mix improvement and successful cost management initiatives offset 
-    inflationary pressures.
-    <br/><br/>
-    <b>Asia Pacific:</b> Outstanding 12.1% growth to $504M supported by market expansion 
-    and increasing consumer adoption of Western-style products. China and Southeast Asia 
-    markets showed exceptional performance.
-    <br/><br/>
-    <b>Latin America:</b> Solid 6.2% growth to $196M with strong performance in Brazil 
-    and Mexico. Local product adaptations and expanded distribution drove market penetration.
-    <br/><br/>
-    <b>Middle East & Africa:</b> Emerging markets delivered 8.9% growth to $84M, reflecting 
-    successful market entry strategies and partnership development.
-    """
-    story.append(Paragraph(regional_analysis, styles['Normal']))
-    story.append(Spacer(1, 25))
-    
-    # Cost Structure Analysis
-    story.append(Paragraph("COST STRUCTURE & MARGIN ANALYSIS", section_style))
-    
-    cost_analysis = """
-    <b>Cost of Goods Sold:</b> Represented 57.7% of revenue, down from 59.9% in 2022. 
-    Improvement driven by strategic pricing actions (+$89M impact), supply chain efficiencies 
-    (+$34M), and favorable product mix shift toward higher-margin segments (+$28M).
-    <br/><br/>
-    <b>Operating Expenses:</b> Increased 6.1% to $726M, below revenue growth rate, demonstrating 
-    operational leverage. Key investments included digital transformation ($45M), innovation 
-    capabilities ($38M), and market expansion ($29M).
-    <br/><br/>
-    <b>Key Cost Pressures:</b> Raw material inflation (+$67M), labor cost increases (+$34M), 
-    and logistics expenses (+$28M) were successfully offset through pricing actions and 
-    efficiency programs.
-    """
-    story.append(Paragraph(cost_analysis, styles['Normal']))
-    story.append(Spacer(1, 25))
-    
-    # Cash Flow & Capital Allocation
-    story.append(Paragraph("CASH FLOW & CAPITAL ALLOCATION", section_style))
-    
-    cashflow_data = [
-        ['Cash Flow Components', '2023', '2022', 'Change'],
-        ['Operating Cash Flow', '$487M', '$431M', '+$56M'],
-        ['Capital Expenditures', '$129M', '$119M', '+$10M'],
-        ['Free Cash Flow', '$358M', '$312M', '+$46M'],
-        ['Dividends Paid', '$89M', '$76M', '+$13M'],
-        ['Share Repurchases', '$125M', '$95M', '+$30M'],
-        ['Acquisitions', '$67M', '$45M', '+$22M'],
-        ['Debt Reduction', '$45M', '$78M', '-$33M']
-    ]
-    
-    cashflow_table = Table(cashflow_data, colWidths=[2.5*inch, 1.2*inch, 1.2*inch, 1*inch])
-    cashflow_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.darkorange),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, -1), 9),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
-    ]))
-    
-    story.append(cashflow_table)
-    story.append(Spacer(1, 20))
-    
-    # Outlook and Strategy
-    story.append(Paragraph("2024 OUTLOOK & STRATEGIC PRIORITIES", section_style))
-    
-    outlook = """
-    Looking ahead to 2024, we expect continued revenue growth of 6-8% driven by innovation 
-    pipeline launches, geographic expansion, and premium positioning strategies. We anticipate 
-    some margin pressure from ongoing inflationary impacts but expect to maintain EBITDA 
-    margins above 22% through operational excellence initiatives.
-    <br/><br/>
-    <b>Strategic Priorities:</b>
-    <br/>• Innovation acceleration in health & wellness segments
-    <br/>• Digital transformation and e-commerce expansion
-    <br/>• Sustainability leadership and ESG commitments
-    <br/>• Operational efficiency and cost optimization
-    <br/>• Strategic partnerships and selective acquisitions
-    <br/>• Talent development and organizational capability building
-    """
-    story.append(Paragraph(outlook, styles['Normal']))
-    
-    return story
-
 def create_operational_report_content(report, title_style, section_style, subsection_style, styles):
     """Create content for Supply Chain Cost Analysis Report"""
     story = []
@@ -543,12 +363,6 @@ def create_financial_operational_reports(session, output_dir='/tmp/financial_rep
     
     reports_data = [
         {
-            'filename': 'Annual_Financial_Report_2023.pdf',
-            'report_type': 'Annual Financial Report',
-            'period': '2023',
-            'content_type': 'financial'
-        },
-        {
             'filename': 'Supply_Chain_Cost_Analysis_Q4_2023.pdf',
             'report_type': 'Supply Chain Cost Analysis',
             'period': 'Q4 2023',
@@ -604,9 +418,7 @@ def create_financial_operational_reports(session, output_dir='/tmp/financial_rep
         
         story = []
         
-        if report['content_type'] == 'financial':
-            story.extend(create_financial_report_content(report, title_style, section_style, subsection_style, styles))
-        elif report['content_type'] == 'operational':
+        if report['content_type'] == 'operational':
             story.extend(create_operational_report_content(report, title_style, section_style, subsection_style, styles))
         elif report['content_type'] == 'sustainability':
             story.extend(create_sustainability_report_content(report, title_style, section_style, subsection_style, styles))
