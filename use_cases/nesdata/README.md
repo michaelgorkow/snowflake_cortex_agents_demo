@@ -72,8 +72,10 @@ It discovers the following products:
 - **PureLife Sparkling** 
 - **PureLife Flavoured**
 
+It also recognizes that the campaign is run between **June - August 2022** which it correctly translates into the right filter criteria for the SQL query.
+
 ### 2. Complex SQL Generation
-With the products identified from the documentation, the agent creates a sophisticated SQL query:
+With the products and campaign period identified from the PDF document, the agent creates a sophisticated SQL query:
 
 ```sql
 SELECT
