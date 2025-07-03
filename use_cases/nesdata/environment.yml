@@ -1,0 +1,6 @@
+name: app_environment
+channels:
+  - snowflake
+dependencies:
+  - reportlab=*
+  - snowflake-ml-python=1.8.6
