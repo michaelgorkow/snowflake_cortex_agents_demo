@@ -64,6 +64,8 @@ This demonstration goes far beyond simple Text-to-SQL or RAG use cases. Let's ex
 
 > **"Which products were featured in the Summer Hydration campaign and how did their individual sales perform during the campaign? Visualize sales in a line plot."**
 
+![Example_Question](_resources/agents_example_question.png)
+
 ### 1. Document Analysis
 The agent first identifies that this question requires finding the relevant PDF containing information about the marketing campaign, including which products were included.
 
