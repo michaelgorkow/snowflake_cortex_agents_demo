@@ -1,9 +1,0 @@
-# Streamlit in Snowflake
-name: streamlit-app
-channels:
-  - snowflake
-dependencies:
-  - streamlit=1.39.0
-  - snowflake-snowpark-python=1.26.0
-  - streamlit-extras=0.4.0
-  - plotly=5.24.1
