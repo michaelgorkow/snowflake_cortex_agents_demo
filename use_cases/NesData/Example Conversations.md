@@ -1,6 +1,6 @@
 Here are some example conversations that you can have
 
-> 🕵️ Visualize the weekly product revenue for coffee products in 2024 and 2025 in a line plot.
+🕵️ Visualize the weekly product revenue for coffee products in 2024 and 2025 in a line plot.
 
 ---
 
@@ -8,7 +8,7 @@ Here are some example conversations that you can have
 
 ---
 
-> 🕵️ Why did product revenue drop in October and December 2024?
+🕵️ Why did product revenue drop in October and December 2024?
 
 ---
 
