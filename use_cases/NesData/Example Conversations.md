@@ -4,7 +4,7 @@ Here are some example conversations that you can have
 
 ---
 
-> 🤖 ![Coffee Revenue per Week](resources/graphs/coffee_revenue_per_week.png)
+🤖 ![Coffee Revenue per Week](resources/graphs/coffee_revenue_per_week.png)
 
 ---
 
@@ -12,5 +12,5 @@ Here are some example conversations that you can have
 
 ---
 
-> 🤖 ![conv](resources/graphs/production_quality_issues.png)
+🤖 ![conv](resources/graphs/production_quality_issues.png)
 
